@@ -370,7 +370,7 @@ def RandomForest_model(X_train, y_train, X_test, y_test):
 
     print("Classification Report:\n", classification_report(y_test, y_preds_rf))
 
-    return y_preds_rf
+    return model
 
 y_preds_rf = RandomForest_model(X_train, y_train, X_test, y_test)
 
