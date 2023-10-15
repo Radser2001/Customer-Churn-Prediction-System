@@ -3,16 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/styles.css" />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
+
     <script>
       tailwind.config = {
         darkMode: "media",
@@ -74,11 +77,6 @@
       };
     </script>
 
-    <!---->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='styles.css') }}"></script>
-
     <title>{% block title %}Base{% endblock %}</title>
   </head>
   <body class="dark:bg-slate-900">
@@ -87,6 +85,7 @@
     <!-- Main content block -->
     <div>{% block content %}{% endblock %}</div>
     {% include "footer.html" %}
+    <script src="../static/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>
