@@ -5,12 +5,10 @@ views = Blueprint('views', __name__)
 
 @views.route("/")
 def home():
- 
     return render_template("home.html")
 
 @views.route("/form")
 def customer_details():
-
     return render_template("customerDetails.html")
 
 @views.route("/customerDetails", methods=['POST'])
@@ -37,16 +35,22 @@ def customer_details_post():
         form_data['MonthlyCharge'] = request.form.get('monthlyCharge')
         form_data['TotalCharge'] = request.form.get('totalCharge')
 
-
-        with open("model.sav", "rb") as model_file:
+        try:
+            with open("model.sav", "rb") as model_file:
                 model = joblib.load(model_file)
-                print(type(model))
-            # Prepare input data for prediction
-        x_df = pd.DataFrame.from_dict([form_data])
+                # Prepare input data for prediction
+                x_df = pd.DataFrame.from_dict([form_data])
 
-        # Use the model to make predictions
-        prediction = model.predict(x_df)
+                # Apply preprocessing steps to x_df if necessary
 
-        print(f"Prediction: {prediction}")
+                # Use the model to make predictions
+                prediction = model.predict(x_df)
+
+                print(f"Prediction: {prediction}")
+
+        except FileNotFoundError:
+            flash("Model file not found")
+        except:
+            flash("Error loading the model")
 
     return render_template("home.html")
