@@ -1,6 +1,9 @@
 from flask import Blueprint, flash, render_template, request, url_for, redirect, session
 import joblib
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler(feature_range=(0, 1))
+
 views = Blueprint('views', __name__)
 
 @views.route("/")
@@ -43,6 +46,9 @@ def customer_details_post():
             form_data['Dependents'] = 0
 
         form_data['tenure'] = request.form.get('tenure')
+        form_data['tenure'] = (float(form_data['tenure']) - 0) / (72 - 0)
+        print(form_data['tenure'])
+
         phone_service = request.form.get('PhoneService')
         if phone_service == "Yes":
             form_data['PhoneService'] = 1
@@ -98,8 +104,13 @@ def customer_details_post():
             form_data['PaperlessBilling'] = 0
 
         form_data['MonthlyCharges'] = request.form.get('monthlyCharge')
+        form_data['MonthlyCharges'] = (float(form_data['MonthlyCharges']) - 18.25) / (118.75 - 18.25)
+        print(form_data['MonthlyCharges'])
         
         form_data['TotalCharges'] = request.form.get('totalCharge')
+        form_data['TotalCharges'] = (float(form_data['TotalCharges']) - 18.8) / (8684.8 - 18.8)
+        print(form_data['TotalCharges'])
+
 
         internet_service = request.form.get('InternetService')
         if internet_service == "DSL":
