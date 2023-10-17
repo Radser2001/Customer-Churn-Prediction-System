@@ -2,373 +2,484 @@
 
 <!-- Set the content -->
 {% block content %}
-<!-- This is an example component -->
+
 <div class="mt-20 mb-20">
   <!-- Form -->
   <form
-    class="ml-20 mr-20 bg-slate-200 pb-10 h-full"
+    class="ml-20 mr-20 bg-gray-800 pb-10 rounded-xl h-full"
     action="/customerDetails"
     method="POST"
   >
+    <h2 class="text-xl text-center text-white lg:text-4xl font-bold pt-8 mb-4">
+      Enter the Customer Details
+    </h2>
     <div class="grid grid-cols-2 pl-20 pt-10 pb-10 mb-10 gap-4">
-      <div class="border rounded-md bg-white p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Select Your Gender</h4>
+      <div class="rounded-md bg-gray-700 p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">Gender</h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Gender" value="Female" />
-            <i class="pl-2">Female</i>
+            <input type="radio" name="Gender" value="Female" required />
+            <i class="pl-2 text-white">Female</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Gender" value="Male" />
-            <i class="pl-2">Male</i>
+            <input type="radio" name="Gender" value="Male" required />
+            <i class="pl-2 text-white">Male</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Partner ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Partner ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Partner" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="Partner" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Partner" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="Partner" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Dependants ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Senior Citizen ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Dependents" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="SeniorCitizen" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Dependents" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="SeniorCitizen" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Phone Service ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Dependants ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="PhoneService" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="Dependents" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="PhoneService" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="Dependents" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Multiple Lines ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Phone Service ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="MultipleLines" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="PhoneService" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="MultipleLines" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="PhoneService" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Internet Service ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Multiple Lines ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="InternetService" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="MultipleLines" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="InternetService" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="MultipleLines" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Online Security ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Internet Service ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="OnlineSecurity" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="InternetService" value="DSL" required />
+            <i class="pl-2 text-white">DSL</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="OnlineSecurity" value="No" />
-            <i class="pl-2">No</i>
+            <input
+              type="radio"
+              name="InternetService"
+              value="Fiber optic"
+              required
+            />
+            <i class="pl-2 text-white">Fiber optic</i>
+          </label>
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input type="radio" name="InternetService" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Online Backup ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Online Security ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="OnlineBackup" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="OnlineSecurity" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="OnlineBackup" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="OnlineSecurity" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Streaming Movies ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Online Backup ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="DeviceProtection" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="OnlineBackup" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="DeviceProtection" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="OnlineBackup" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Tech Support ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Streaming Movies ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="TechSupport" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="DeviceProtection" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="TechSupport" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="DeviceProtection" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Streaming TV ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Tech Support ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="StreamingTV" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="TechSupport" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="StreamingTV" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="TechSupport" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Streaming Movies ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Streaming TV ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="StreamingMovies" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input type="radio" name="StreamingTV" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="StreamingMovies" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="StreamingTV" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Contract ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Streaming Movies ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Contract" value="Month-to-month" />
-            <i class="pl-2">Month-to-month</i>
+            <input type="radio" name="StreamingMovies" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="Contract" value="One year" />
-            <i class="pl-2">One year</i>
-          </label>
-
-          <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
-          >
-            <input type="radio" name="Contract" value="Two year" />
-            <i class="pl-2">Two year</i>
+            <input type="radio" name="StreamingMovies" value="No" required />
+            <i class="pl-2 text-white">No</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Paperless Billing ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Contract ?
+        </h4>
 
         <div class="flex flex-col">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="PaperlessBiling" value="Yes" />
-            <i class="pl-2">Yes</i>
+            <input
+              type="radio"
+              name="Contract"
+              value="Month-to-month"
+              required
+            />
+            <i class="pl-2 text-white">Month-to-month</i>
           </label>
 
           <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
-            <input type="radio" name="PaperlessBiling" value="No" />
-            <i class="pl-2">No</i>
+            <input type="radio" name="Contract" value="One year" required />
+            <i class="pl-2 text-white">One year</i>
+          </label>
+
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input type="radio" name="Contract" value="Two year" required />
+            <i class="pl-2 text-white">Two year</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Payment Method ?</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Paperless Billing ?
+        </h4>
+
+        <div class="flex flex-col">
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input type="radio" name="PaperlessBiling" value="Yes" required />
+            <i class="pl-2 text-white">Yes</i>
+          </label>
+
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input type="radio" name="PaperlessBiling" value="No" required />
+            <i class="pl-2 text-white">No</i>
+          </label>
+        </div>
+      </div>
+
+      <!-- grid -->
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">
+          Payment Method ?
+        </h4>
 
         <div class="grid grid-cols-2 gap-4">
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
-          >
-            <input type="radio" name="PaymentMethod" value="Electrnic Check" />
-            <i class="pl-2">Electrnic Check</i>
-          </label>
-
-          <label
-            class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
-          >
-            <input type="radio" name="PaymentMethod" value="Mailed Check" />
-            <i class="pl-2">Mailed Check</i>
-          </label>
-
-          <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
             <input
+              type="radio"
+              name="PaymentMethod"
+              value="Electronic Check"
+              required
+            />
+            <i class="pl-2 text-white">Electronic Check</i>
+          </label>
+
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input
+              type="radio"
+              name="PaymentMethod"
+              value="Mailed Check"
+              required
+            />
+            <i class="pl-2 text-white">Mailed Check</i>
+          </label>
+
+          <label
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+          >
+            <input
+              required
               type="radio"
               name="PaymentMethod"
               value="Bank transfer (automatic)"
             />
-            <i class="pl-2">Bank transfer (automatic)</i>
+            <i class="pl-2 text-white">Bank transfer (automatic)</i>
           </label>
 
           <label
-            class="flex bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
+            class="flex bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
           >
             <input
+              required
               type="radio"
               name="PaymentMethod"
               value="Credit card (automatic)"
             />
-            <i class="pl-2">Credit card (automatic)</i>
+            <i class="pl-2 text-white">Credit card (automatic)</i>
           </label>
         </div>
       </div>
 
       <!-- grid -->
-      <div class="border bg-white rounded-md p-4 w-10/12">
-        <h4 class="text-xl lg:text-2xl font-semibold">Charges</h4>
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">Charges</h4>
 
         <div class="flex flex-col">
           <label
-            class="flex flex-col bg-gray-100 mr-4 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
-            ><i class="pl-2">Monthly Charge</i>
-            <input type="text" name="monthlyCharge" />
+            class="flex flex-col bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+            ><i class="pl-2 text-white">Monthly Charge</i>
+            <input
+              type="number"
+              name="monthlyCharge"
+              required
+              class="bg-gray-600 text-white p-2"
+            />
           </label>
 
           <label
-            class="flex flex-col bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-indigo-300 cursor-pointer"
-            ><i class="pl-2">Total Charge</i>
-            <input type="text" name="totalCharge" />
+            class="flex flex-col bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+            ><i class="pl-2 text-white">Total Charge</i>
+            <input
+              type="number"
+              name="totalCharge"
+              required
+              class="bg-gray-600 text-white p-2"
+            />
+          </label>
+        </div>
+      </div>
+
+      <!-- grid -->
+      <div class="bg-gray-700 rounded-md p-4 w-10/12">
+        <h4 class="text-xl lg:text-2xl font-semibold text-gray-200">Tenure</h4>
+
+        <div class="flex flex-col">
+          <label
+            class="flex flex-col bg-gray-300 text-gray-700 rounded-md px-3 py-2 my-3 hover:bg-gray-500 cursor-pointer bg-gray-600"
+            ><i class="pl-2 text-white">Enter the value</i>
+
+            <input
+              type="number"
+              name="tenure"
+              required
+              class="bg-gray-600 text-white p-2"
+            />
           </label>
         </div>
       </div>
