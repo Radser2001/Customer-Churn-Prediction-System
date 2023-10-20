@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pd
@@ -22,21 +22,23 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 import joblib
-
-
-# In[2]:
-
-
-data=pd.read_csv("E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/WA_Fn-UseC_-Telco-Customer-Churn.csv")
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import GridSearchCV
 
 
 # In[3]:
 
 
-data.head()
+data=pd.read_csv("E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 
 # In[4]:
+
+
+data.head()
+
+
+# In[5]:
 
 
 def dataoveriew(df, message):
@@ -53,9 +55,9 @@ def dataoveriew(df, message):
 dataoveriew(data, 'Overview of the dataset')
 
 
-# # Finding Null Values
+# # Find Null Values
 
-# In[5]:
+# In[6]:
 
 
 data.isnull().sum()
@@ -63,7 +65,7 @@ data.isnull().sum()
 
 # # Explore target variable
 
-# In[6]:
+# In[7]:
 
 
 churn_counts = data['Churn'].value_counts()
@@ -76,7 +78,7 @@ plt.show()
 
 # # Compare categorical variables with churn column
 
-# In[7]:
+# In[8]:
 
 
 #Defining bar chart function
@@ -140,7 +142,7 @@ def bar(feature, df=data ):
     return fig.show()
 
 
-# In[8]:
+# In[9]:
 
 
 bar('StreamingMovies')
@@ -154,7 +156,7 @@ bar('gender')
 bar('SeniorCitizen')
 
 
-# In[9]:
+# In[10]:
 
 
 #replace no internet service in to NO and no phone service in to No
@@ -162,7 +164,7 @@ data.replace('No internet service','No',inplace=True)
 data.replace('No phone service','No',inplace=True)
 
 
-# In[10]:
+# In[11]:
 
 
 def print_unique_col_values(data):
@@ -173,14 +175,14 @@ def print_unique_col_values(data):
 print_unique_col_values(data)
 
 
-# In[11]:
+# In[12]:
 
 
 # Save the updated DataFrame to the CSV file
 data.to_csv('E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/Telco-Customer-Churn.csv', index=False)
 
 
-# In[12]:
+# In[13]:
 
 
 bar('MultipleLines')
@@ -194,7 +196,7 @@ bar('TechSupport')
 
 # # Explore Numeric Features
 
-# In[13]:
+# In[14]:
 
 
 # Convert "TotalCharges" column to float
@@ -204,24 +206,26 @@ data["TotalCharges"] = pd.to_numeric(data["TotalCharges"], errors="coerce")
 print(data.dtypes)
 
 
-# In[14]:
+# # Fill the Null values with median
+# 
+
+# In[15]:
 
 
 # Fill missing values with the median
 median_value = data["TotalCharges"].median()
 data["TotalCharges"].fillna(median_value,inplace=True)
 
-# Verify the updated column
-print(data["TotalCharges"])
+# Verify the updated columnprint(data["TotalCharges"])
 
 
-# In[15]:
+# In[16]:
 
 
 data.isnull().sum()
 
 
-# In[16]:
+# In[17]:
 
 
 # Save the updated DataFrame to the CSV file
@@ -230,25 +234,33 @@ data.to_csv('E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/
 
 # # Exploring the Outliers
 
-# In[17]:
-
-
-plt.boxplot(data['tenure'],vert=False)
-plt.show()
-
-
 # In[18]:
 
 
-plt.boxplot(data['MonthlyCharges'],vert=False)
-plt.show()
+import matplotlib.pyplot as plt
 
+# Assuming you have a 'data' variable containing the necessary data
 
-# In[19]:
+# Create a list of data to plot
+data_to_plot = [data['tenure'], data['MonthlyCharges'], data['TotalCharges']]
 
+# Create a list of labels for the box plots
+labels = ['tenure', 'MonthlyCharges', 'TotalCharges']
 
-plt.boxplot(data['TotalCharges'],vert=False)
-plt.show()
+# Create separate figures and axes for each box plot
+for i in range(len(data_to_plot)):
+    fig, ax = plt.subplots()
+
+    # Plot the box plot for the current variable
+    ax.boxplot(data_to_plot[i], vert=False)
+
+    # Set the title and axes labels for the current plot
+    ax.set_title(f'Box Plot of {labels[i]}')
+    ax.set_xlabel('Values')
+    ax.set_ylabel(labels[i])
+
+    # Display the plot
+    plt.show()
 
 
 # It seems that there are no outliers in tenure , monthlycharges and totalcharges columns
@@ -257,7 +269,7 @@ plt.show()
 
 # Simplifying the dataset by binning on numerical variables (tenure, MonthlyCharges, and TotalCharges) and transforms them into categorical variables with three levels: 'low', 'medium', and 'high'.
 
-# In[20]:
+# In[19]:
 
 
 #Create an empty dataframe
@@ -280,7 +292,7 @@ bar('TotalCharges_bins', bin_df)
 
 # # Data Preprocessing
 
-# In[21]:
+# In[20]:
 
 
 #Encording the Categorical Features
@@ -299,20 +311,20 @@ data.columns
 data['gender'].replace({'Female':0,'Male':1},inplace=True)
 
 
-# In[22]:
+# In[21]:
 
 
 # Save the updated DataFrame to the CSV file
 data.to_csv('E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/Telco-Customer-Churn.csv', index=False)
 
 
-# In[23]:
+# In[22]:
 
 
 print(data.dtypes)
 
 
-# In[24]:
+# In[23]:
 
 
 #reindexing the dataset
@@ -327,14 +339,14 @@ data = data[other_columns + [column_name]]
 data.head()
 
 
-# In[25]:
+# In[24]:
 
 
 # Save the updated DataFrame to the CSV file
 data.to_csv('E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/Telco-Customer-Churn.csv', index=False)
 
 
-# In[26]:
+# In[25]:
 
 
 # Checking the correlation between features
@@ -363,7 +375,7 @@ fig.show()
 # - A correlation of 0 (r = 0) indicates no linear relationship between the variables.
 # 
 
-# In[27]:
+# In[26]:
 
 
 #Change variable name seperators to '_'
@@ -371,13 +383,13 @@ all_columns = [column.replace(" ", "_").replace("(", "_").replace(")", "_").repl
 data.columns=all_columns
 
 
-# In[28]:
+# In[27]:
 
 
 print(data.dtypes)
 
 
-# In[29]:
+# In[28]:
 
 
 #Feature Scaling
@@ -388,27 +400,27 @@ scaler = MinMaxScaler()
 data[cols_to_scale] = scaler.fit_transform(data[cols_to_scale])
 
 
-# In[30]:
+# In[29]:
 
 
 data.head()
 
 
-# In[31]:
+# In[30]:
 
 
 # Save the updated DataFrame to the CSV file
 data.to_csv('E:/sliit/Year 3/SEM 1/FDM/Project/Customer-Churn-Prediction-System/Dataset/Telco-Customer-Churn.csv', index=False)
 
 
-# In[32]:
+# In[31]:
 
 
 #Droping the unuseful columns
 data.drop(["customerID"],axis=1,inplace = True)
 
 
-# In[33]:
+# In[32]:
 
 
 churn_counts = data['Churn'].value_counts()
@@ -423,7 +435,7 @@ plt.show()
 
 # Data set is unbalanced
 
-# In[34]:
+# In[33]:
 
 
 #balancing the dataset using SMOTE oversampling method
@@ -438,19 +450,21 @@ X_sm, y_sm = smote.fit_resample(X,y)
 y_sm.value_counts()
 
 
-# In[51]:
+# In[34]:
 
 
 X_sm.shape
 
 
-# In[49]:
+# In[35]:
 
 
 y_sm
 
 
-# In[65]:
+# # Model Creation
+
+# In[36]:
 
 
 from sklearn.model_selection import train_test_split
@@ -466,7 +480,7 @@ from sklearn.metrics import classification_report
 X_train, X_test, y_train, y_test = train_test_split(X_sm, y_sm, test_size=0.2, random_state=42)
 
 
-# In[66]:
+# In[37]:
 
 
 # Create and train the  LogisticRegression  model
@@ -481,7 +495,7 @@ print("Logistic Regression")
 print(classification_report(y_test, y_pred))
 
 
-# In[72]:
+# In[38]:
 
 
 # Create and train the Decision Tree model
@@ -494,20 +508,7 @@ print("Decision Tree:")
 print(classification_report(y_test, dt_y_pred))
 
 
-# In[73]:
-
-
-# Create and train the Random Forest model
-rf_model = RandomForestClassifier()
-rf_model.fit(X_train, y_train)
-
-rf_y_pred = rf_model.predict(X_test)
-
-print("Random Forest:")
-print(classification_report(y_test, rf_y_pred))
-
-
-# In[74]:
+# In[39]:
 
 
 # Create and train the Naive Bayes model
@@ -520,7 +521,7 @@ print("Naive Bayes:")
 print(classification_report(y_test, nb_y_pred))
 
 
-# In[76]:
+# In[40]:
 
 
 # Create and train the SVM model
@@ -533,14 +534,98 @@ print("Support Vector Machine:")
 print(classification_report(y_test, svm_y_pred))
 
 
-# In[78]:
+# In[41]:
+
+
+# Create and train the Random Forest model
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train, y_train)
+
+rf_y_pred = rf_model.predict(X_test)
+
+print("Random Forest:")
+print(classification_report(y_test, rf_y_pred))
+
+
+# ## Compare accuracy scores of each model
+
+# In[42]:
+
+
+accuracy_scores = {
+    'Logistic Regression': accuracy_score(y_test, y_pred),
+    'Decision Tree': accuracy_score(y_test, dt_y_pred),
+    'Naive Bayes': accuracy_score(y_test, nb_y_pred),
+    'Support Vector Machine': accuracy_score(y_test, svm_y_pred),
+    'Random Forest': accuracy_score(y_test, rf_y_pred)
+}
+
+# Set the figure size
+plt.figure(figsize=(10, 6))
+
+# Plot the bar graph
+plt.bar(accuracy_scores.keys(), accuracy_scores.values())
+plt.xlabel('Models')
+plt.ylabel('Accuracy')
+plt.title('Accuracy Comparison of Different Models')
+plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+
+plt.tight_layout()  # Adjust the layout to prevent label cutoff
+plt.show()
+
+
+# ## Improve best model by hyperparameter tuning
+
+# In[43]:
+
+
+# Define the Random Forest model
+rf_model = RandomForestClassifier()
+
+# Define the parameter grid
+param_grid = {
+    'n_estimators': [100, 300, 500],
+    'max_features': ['sqrt', 'log2'],
+    'max_depth': [None, 5, 10],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf': [1, 2],
+    'bootstrap': [True, False]
+}
+
+# Perform grid search with cross-validation
+grid_search = GridSearchCV(rf_model, param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+
+# Get the best model and its predictions
+best_rf_model = grid_search.best_estimator_
+rf_y_pred = best_rf_model.predict(X_test)
+
+# Evaluate the model
+print("Random Forest (after parameter tuning):")
+print(classification_report(y_test, rf_y_pred))
+
+
+# In[44]:
+
+
+# Fit the model
+best_rf_model.fit(X_train, y_train)
+
+
+# In[45]:
 
 
 #Saving best model 
 import joblib
 #Sava the model to disk
 filename = 'model.sav'
-joblib.dump(rf_model, filename)
+joblib.dump(best_rf_model, filename)
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
