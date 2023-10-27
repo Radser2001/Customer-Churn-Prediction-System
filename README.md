@@ -1,5 +1,6 @@
 # Customer-Churn-Prediction-System
 FDM Mini Project
+#output
 ![Screenshot 2023-10-19 155308](https://github.com/maleeshag/Customer-Churn-Prediction-System/assets/99645165/d4033666-885c-467d-884a-1418887da7df)
 
 ![Screenshot 2023-10-19 155344](https://github.com/maleeshag/Customer-Churn-Prediction-System/assets/99645165/5e852bbe-2ac0-4bda-b432-6cb845074620)
